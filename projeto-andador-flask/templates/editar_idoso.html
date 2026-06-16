@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h2>Editar Idoso</h2>
+
+<form method="POST">
+
+    <input
+        name="nome"
+        value="{{ idoso.nome }}"
+        class="form-control mb-3">
+
+    <input
+        name="telefone"
+        value="{{ idoso.telefone }}"
+        class="form-control mb-3">
+
+    <input
+        name="endereco"
+        value="{{ idoso.endereco }}"
+        class="form-control mb-3">
+
+    <textarea
+        name="observacoes"
+        class="form-control mb-3">{{ idoso.observacoes }}</textarea>
+
+    <button
+        class="btn btn-primary">
+
+        Salvar Alterações
+
+    </button>
+
+</form>
+
+{% endblock %}

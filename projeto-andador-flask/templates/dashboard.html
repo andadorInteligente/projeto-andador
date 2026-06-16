@@ -1,0 +1,211 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="topbar">
+
+    <div>
+
+        <h2>
+            Olá, {{ usuario.nome }} 👋
+        </h2>
+
+        <p>
+            Bem-vindo ao painel de monitoramento do cuidador.
+        </p>
+
+    </div>
+
+    <div>
+
+        <a
+            href="/configuracoes"
+            class="btn btn-dark btn-soft">
+
+            ⚙️ Configurações
+
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row g-4 mb-4">
+
+    <div class="col-md-4">
+
+        <div class="stat-card">
+
+            <div class="stat-icon stat-blue">
+                👵
+            </div>
+
+            <h3>{{ total_idosos }}</h3>
+
+            <p>Idosos monitorados</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="stat-card">
+
+            <div class="stat-icon stat-green">
+                💊
+            </div>
+
+            <h3>{{ total_medicamentos|default(0) }}</h3>
+
+            <p>Medicamentos cadastrados</p>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="stat-card">
+
+            <div class="stat-icon stat-red">
+                🚨
+            </div>
+
+            <h3>{{ total_quedas|default(0) }}</h3>
+
+            <p>Quedas registradas</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-8">
+
+        <div class="panel-card">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <div>
+
+                    <h4 class="mb-0">
+                        Últimas Quedas
+                    </h4>
+
+                    <small class="text-muted">
+                        Histórico recente de ocorrências registradas.
+                    </small>
+
+                </div>
+
+                <span class="badge-soft-danger">
+                    Monitoramento ativo
+                </span>
+
+            </div>
+
+            {% if ultimas_quedas is defined and ultimas_quedas %}
+
+            <table class="table table-hover">
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Data/Hora</th>
+                    <th>Ação</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for q in ultimas_quedas %}
+
+                <tr>
+
+                    <td>#{{ q.id }}</td>
+
+                    <td>{{ q.data_hora }}</td>
+
+                    <td>
+
+                        <a
+                            href="/quedas/{{ q.id }}"
+                            class="btn btn-sm btn-primary">
+
+                            Ver detalhes
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="empty-state">
+
+                <h5>
+                    Nenhuma queda registrada
+                </h5>
+
+                <p>
+                    As ocorrências aparecerão aqui quando forem detectadas pelo sistema.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="action-card">
+
+            <h4>
+                Gestão dos Idosos
+            </h4>
+
+            <p>
+                Cadastre idosos, medicamentos e acompanhe o histórico de quedas em tempo real.
+            </p>
+
+            <a
+                href="/idosos"
+                class="btn btn-light btn-soft w-100 mb-2">
+
+                Gerenciar Idosos
+
+            </a>
+
+            <a
+                href="/configuracoes"
+                class="btn btn-outline-light btn-soft w-100">
+
+                Configurar Telegram
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

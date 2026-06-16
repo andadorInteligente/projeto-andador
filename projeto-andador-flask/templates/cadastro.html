@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block conteudo_auth %}
+
+<h3 class="mb-3">
+    Cadastro
+</h3>
+
+<form method="POST">
+
+    <input
+        name="nome"
+        class="form-control mb-3"
+        placeholder="Nome">
+
+    <input
+        name="email"
+        class="form-control mb-3"
+        placeholder="Email">
+
+    <input
+        type="password"
+        name="senha"
+        class="form-control mb-3"
+        placeholder="Senha">
+
+    <button
+        class="btn btn-success w-100">
+
+        Cadastrar
+
+    </button>
+
+</form>
+
+<hr>
+
+<a href="/login">
+    Já tenho conta
+</a>
+
+{% endblock %}

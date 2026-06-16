@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h2>Novo Idoso</h2>
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input
+        name="nome"
+        class="form-control mb-3"
+        placeholder="Nome">
+
+    <input
+        name="telefone"
+        class="form-control mb-3"
+        placeholder="Telefone">
+
+    <input
+        name="endereco"
+        class="form-control mb-3"
+        placeholder="Endereço">
+
+    <textarea
+        name="observacoes"
+        class="form-control mb-3"
+        placeholder="Observações"></textarea>
+
+    <label class="mb-2">
+        Foto do Idoso
+    </label>
+
+    <input
+        type="file"
+        name="foto"
+        class="form-control mb-3">
+
+    <button
+        class="btn btn-primary">
+
+        Salvar
+
+    </button>
+
+</form>
+
+{% endblock %}

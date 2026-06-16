@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="page-header">
+
+    <div>
+
+        <h2>{{ idoso.nome }}</h2>
+
+        <p>
+            Perfil completo, medicamentos e histórico de quedas.
+        </p>
+
+    </div>
+
+    <div class="d-flex gap-2 flex-wrap">
+
+        <a
+            href="/idosos/{{ idoso.id }}/medicamentos/novo"
+            class="btn btn-success btn-soft">
+            + Medicamento
+        </a>
+
+        <a
+            href="/idosos/{{ idoso.id }}/simular-queda"
+            class="btn btn-danger btn-soft">
+            Simular Queda
+        </a>
+
+        <a
+            href="/idosos"
+            class="btn btn-secondary btn-soft">
+            Voltar
+        </a>
+
+    </div>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-4">
+
+        <div class="panel-card">
+
+            {% if idoso.foto %}
+
+            <img
+                src="{{ url_for('static', filename='uploads/' + idoso.foto) }}"
+                class="profile-img mb-3">
+
+            {% else %}
+
+            <div class="empty-state">
+                <h1>👵</h1>
+                <p>Sem foto cadastrada</p>
+            </div>
+
+            {% endif %}
+
+            <div class="mb-3">
+
+                <div class="info-label">Telefone</div>
+
+                <div class="info-value">
+                    {{ idoso.telefone or 'Não informado' }}
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <div class="info-label">Endereço</div>
+
+                <div class="info-value">
+                    {{ idoso.endereco or 'Não informado' }}
+                </div>
+
+            </div>
+
+            <div>
+
+                <div class="info-label">Observações</div>
+
+                <div class="info-value">
+                    {{ idoso.observacoes or 'Nenhuma observação cadastrada.' }}
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-8">
+
+        <div class="row g-4 mb-4">
+
+            <div class="col-md-6">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon stat-green">
+                        💊
+                    </div>
+
+                    <h3>{{ medicamentos|length }}</h3>
+
+                    <p>Medicamentos cadastrados</p>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon stat-red">
+                        🚨
+                    </div>
+
+                    <h3>{{ quedas|length }}</h3>
+
+                    <p>Quedas registradas</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="panel-card mb-4">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <div>
+
+                    <h4 class="mb-0">Medicamentos</h4>
+
+                    <small class="text-muted">
+                        Horários e dosagens cadastrados.
+                    </small>
+
+                </div>
+
+                <a
+                    href="/idosos/{{ idoso.id }}/medicamentos/novo"
+                    class="btn btn-success btn-sm">
+                    Novo
+                </a>
+
+            </div>
+
+            {% if medicamentos %}
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+                        <th>Nome</th>
+                        <th>Dosagem</th>
+                        <th>Horário</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for m in medicamentos %}
+
+                    <tr>
+
+                        <td>{{ m.nome }}</td>
+
+                        <td>{{ m.dosagem }}</td>
+
+                        <td>
+                            <span class="badge bg-primary">
+                                {{ m.horario }}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="empty-state">
+
+                <h5>Nenhum medicamento cadastrado</h5>
+
+                <p>
+                    Cadastre medicamentos para receber alertas no Telegram.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="panel-card">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                <div>
+
+                    <h4 class="mb-0">Histórico de Quedas</h4>
+
+                    <small class="text-muted">
+                        Ocorrências registradas pelo sistema.
+                    </small>
+
+                </div>
+
+                <span class="badge-soft-danger">
+                    Monitoramento ativo
+                </span>
+
+            </div>
+
+            {% if quedas %}
+
+            <table class="table table-hover">
+
+                <thead>
+
+                    <tr>
+                        <th>Foto</th>
+                        <th>Data/Hora</th>
+                        <th>Localização</th>
+                        <th>Observação</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for q in quedas %}
+
+                    <tr>
+
+                        <td>
+
+                            {% if q.foto %}
+
+                            <img
+                                src="{{ url_for('static', filename='uploads/quedas/' + q.foto) }}"
+                                width="90"
+                                class="rounded">
+
+                            {% else %}
+
+                            Sem foto
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+
+                            <a href="/quedas/{{ q.id }}" class="fw-bold">
+                                {{ q.data_hora }}
+                            </a>
+
+                        </td>
+
+                        <td>
+                            {{ q.latitude }},
+                            {{ q.longitude }}
+                        </td>
+
+                        <td>
+                            {{ q.observacao }}
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="empty-state">
+
+                <h5>Nenhuma queda registrada</h5>
+
+                <p>
+                    As quedas detectadas aparecerão aqui automaticamente.
+                </p>
+
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

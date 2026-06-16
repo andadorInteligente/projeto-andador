@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="page-header">
+
+    <div>
+
+        <h2>Monitoramento</h2>
+
+        <p>
+            Defina qual idoso receberá acompanhamento ativo pelo sistema.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-7">
+
+        <div class="panel-card">
+
+            <h4 class="mb-3">
+                Idoso em Acompanhamento
+            </h4>
+
+            {% if idoso_monitorado %}
+
+                <div class="alert alert-success">
+
+                    <strong>{{ idoso_monitorado.nome }}</strong>
+                    está definido como o idoso monitorado no momento.
+
+                </div>
+
+            {% else %}
+
+                <div class="alert alert-warning">
+
+                    Nenhum idoso foi selecionado para acompanhamento ativo.
+
+                </div>
+
+            {% endif %}
+
+            <form method="POST">
+
+                <label class="form-label">
+                    Selecione o idoso
+                </label>
+
+                <select
+                    name="idoso_id"
+                    class="form-select mb-3">
+
+                    <option value="">
+                        Nenhum idoso selecionado
+                    </option>
+
+                    {% for idoso in idosos %}
+
+                    <option
+                        value="{{ idoso.id }}"
+                        {% if config.idoso_id == idoso.id %}
+                        selected
+                        {% endif %}>
+
+                        {{ idoso.nome }}
+
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <button class="btn btn-primary btn-soft">
+                    Salvar Acompanhamento
+                </button>
+
+                <a
+                    href="/"
+                    class="btn btn-secondary btn-soft">
+                    Voltar
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-5">
+
+        <div class="action-card">
+
+            <h4>
+                Central de Acompanhamento
+            </h4>
+
+            <p>
+                O idoso selecionado nesta tela será considerado o paciente principal em monitoramento.
+            </p>
+
+            <div class="bg-white text-dark rounded p-3 mt-3">
+
+                <strong>Como funciona?</strong>
+
+                <ul class="mt-2 mb-0">
+
+                    <li>
+                        Escolha o idoso que está usando o andador.
+                    </li>
+
+                    <li>
+                        Os alertas de queda serão associados a esse idoso.
+                    </li>
+
+                    <li>
+                        O cuidador receberá notificações no Telegram quando houver uma ocorrência.
+                    </li>
+
+                    <li>
+                        O histórico ficará salvo para consulta posterior na dashboard.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

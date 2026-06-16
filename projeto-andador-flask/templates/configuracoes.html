@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="page-header">
+
+    <div>
+
+        <h2>Configurações</h2>
+
+        <p>
+            Atualize seus dados e conecte sua conta do Telegram.
+        </p>
+
+    </div>
+
+</div>
+
+<div class="row g-4">
+
+    <div class="col-lg-7">
+
+        <div class="panel-card">
+
+            <h4 class="mb-3">
+                Dados do Cuidador
+            </h4>
+
+            <form method="POST">
+
+                <label class="form-label">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    name="nome"
+                    value="{{ usuario.nome }}"
+                    class="form-control mb-3"
+                    required>
+
+                <label class="form-label">
+                    Telefone
+                </label>
+
+                <input
+                    type="text"
+                    name="telefone"
+                    value="{{ usuario.telefone or '' }}"
+                    class="form-control mb-3"
+                    placeholder="Digite seu telefone">
+
+                <label class="form-label">
+                    Status do Telegram
+                </label>
+
+                {% if usuario.telegram_chat_id %}
+
+                <div class="alert alert-success">
+
+                    <strong>
+                        ✅ Telegram conectado
+                    </strong>
+
+                    <br>
+
+                    Sua conta está pronta para receber alertas.
+
+                </div>
+
+                {% else %}
+
+                <div class="alert alert-warning">
+
+                    <strong>
+                        ⚠️ Telegram não conectado
+                    </strong>
+
+                    <br>
+
+                    Utilize o botão ao lado para realizar a conexão.
+
+                </div>
+
+                {% endif %}
+
+                <button
+                    type="submit"
+                    class="btn btn-primary btn-soft">
+
+                    Salvar Configurações
+
+                </button>
+
+                <a
+                    href="/"
+                    class="btn btn-secondary btn-soft">
+
+                    Voltar
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-5">
+
+        <div class="action-card">
+
+            <h4>
+                Integração Telegram
+            </h4>
+
+            <p>
+                Conecte sua conta para receber alertas de quedas,
+                localização e horários de medicamentos.
+            </p>
+
+            <div class="bg-white text-dark rounded p-3 mt-3">
+
+                {% if usuario.telegram_chat_id %}
+
+                <div class="text-center">
+
+                    <div
+                        style="font-size: 48px;"
+                        class="mb-2">
+
+                        ✅
+
+                    </div>
+
+                    <h5>
+                        Telegram conectado
+                    </h5>
+
+                    <p class="text-muted">
+
+                        Os alertas serão enviados automaticamente
+                        para sua conversa.
+
+                    </p>
+
+                    <a
+                        href="/teste-telegram"
+                        class="btn btn-success w-100 mb-2">
+
+                        Enviar mensagem de teste
+
+                    </a>
+
+                    <form
+                        method="POST"
+                        action="/telegram/desconectar"
+                        onsubmit="return confirm('Deseja desconectar sua conta do Telegram?')">
+
+                        <button
+                            type="submit"
+                            class="btn btn-outline-danger w-100">
+
+                            Desconectar Telegram
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+                {% else %}
+
+                <strong>
+                    Como conectar?
+                </strong>
+
+                <ol class="mt-2 mb-3">
+
+                    <li>
+                        Clique em
+                        <strong>Conectar Telegram</strong>.
+                    </li>
+
+                    <li>
+                        O aplicativo do Telegram será aberto.
+                    </li>
+
+                    <li>
+                        Pressione
+                        <strong>Iniciar</strong>.
+                    </li>
+
+                    <li>
+                        Sua conta será vinculada automaticamente.
+                    </li>
+
+                </ol>
+
+                <a
+                    href="{{ telegram_link }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary w-100">
+
+                    ✈️ Conectar Telegram
+
+                </a>
+
+                <small
+                    class="text-muted d-block mt-3 text-center">
+
+                    Este link é exclusivo e expira em 15 minutos.
+
+                </small>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

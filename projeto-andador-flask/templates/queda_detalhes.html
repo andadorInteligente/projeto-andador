@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="card">
+
+    <div class="card-body">
+
+        <h2>
+            🚨 Detalhes da Queda
+        </h2>
+
+        <hr>
+
+        {% if queda.foto %}
+
+        <img
+            src="{{ url_for(
+                'static',
+                filename='uploads/quedas/' + queda.foto
+            ) }}"
+            class="img-fluid rounded">
+
+        {% endif %}
+
+        <hr>
+
+        <p>
+
+            <strong>Data:</strong>
+
+            {{ queda.data_hora }}
+
+        </p>
+
+        <p>
+
+            <strong>Observação:</strong>
+
+            {{ queda.observacao }}
+
+        </p>
+
+        <p>
+
+            <strong>Latitude:</strong>
+
+            {{ queda.latitude }}
+
+        </p>
+
+        <p>
+
+            <strong>Longitude:</strong>
+
+            {{ queda.longitude }}
+
+        </p>
+
+        <hr>
+
+        <h4>
+            📍 Localização da Queda
+        </h4>
+
+        <iframe
+            width="100%"
+            height="400"
+            style="border:0"
+            loading="lazy"
+            allowfullscreen
+            src="https://maps.google.com/maps?q={{ queda.latitude }},{{ queda.longitude }}&z=15&output=embed">
+
+        </iframe>
+
+        <br><br>
+
+        <a
+            href="https://maps.google.com/?q={{ queda.latitude }},{{ queda.longitude }}"
+            target="_blank"
+            class="btn btn-primary">
+
+            Abrir no Google Maps
+
+        </a>
+
+        <a
+            href="/"
+            class="btn btn-secondary">
+
+            Voltar
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

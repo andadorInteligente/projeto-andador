@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block conteudo_auth %}
+
+<h3 class="mb-3">
+    Login
+</h3>
+
+<form method="POST">
+
+    <input
+        class="form-control mb-3"
+        name="email"
+        placeholder="Email">
+
+    <input
+        type="password"
+        class="form-control mb-3"
+        name="senha"
+        placeholder="Senha">
+
+    <button
+        class="btn btn-primary w-100">
+
+        Entrar
+
+    </button>
+
+</form>
+
+<hr>
+
+<a href="/cadastro">
+    Criar conta
+</a>
+
+{% endblock %}

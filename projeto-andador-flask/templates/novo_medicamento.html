@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<h2>
+
+Novo Medicamento
+
+</h2>
+
+<h5>
+
+Idoso: {{ idoso.nome }}
+
+</h5>
+
+<form method="POST">
+
+    <input
+        name="nome"
+        class="form-control mb-3"
+        placeholder="Nome do medicamento">
+
+    <input
+        name="dosagem"
+        class="form-control mb-3"
+        placeholder="Dosagem">
+
+    <input
+        type="time"
+        name="horario"
+        class="form-control mb-3">
+
+    <button
+        class="btn btn-success">
+
+        Salvar
+
+    </button>
+
+</form>
+
+{% endblock %}
