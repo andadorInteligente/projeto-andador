@@ -46,7 +46,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - SQLite
 - HTML
 - CSS
-- Raspberry Pi OS
 - Raspberry Pi
 - Telegram Bot API
 - OpenCV
