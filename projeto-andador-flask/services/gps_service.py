@@ -4,7 +4,7 @@ import serial
 import pynmea2
 
 
-PORTA_GPS = "/dev/serial0"
+PORTA_GPS = "/dev/ttyS0"
 
 BAUDRATE_GPS = 9600
 
