@@ -46,7 +46,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - SQLite
 - HTML
 - CSS
-- Raspberry Pi OS
 - Raspberry Pi
 - Telegram Bot API
 - OpenCV
@@ -97,7 +96,6 @@ O projeto utiliza os seguintes componentes físicos:
 - Buzzer
 - Caixa de som
 - Jumpers
-- Protoboard ou conexões diretas
 
 ### GPS NEO-6M
 
