@@ -24,7 +24,7 @@ Projeto desenvolvido durante a disciplina de Robótica Inclusiva.
 <br>
 
 <p align="center">
-  <img alt="Logo do Andador Inteligente" src="image.png" width="35%">
+  <img alt="Logo do Andador Inteligente" src="imagens/image.png" width="35%">
 </p>
 
 ## 🌐 Documentação
@@ -172,25 +172,25 @@ S --> T[Buzzer alerta o usuário]
 <table>
   <tr>
     <td align="center">
-      <img src="Emerson.png" width="120px;" alt="Foto do Emerson"/><br>
+      <img src="imagens/Emerson.png" width="120px;" alt="Foto do Emerson"/><br>
       <a href="https://www.linkedin.com/in/emerson-willian-19984630b/" target="_blank">
         <sub><b>Emerson Dias</b></sub>
       </a>
     </td>
     <td align="center">
-      <img src="Marcela.png" width="120px;" alt="Foto da Marcela"/><br>
+      <img src="imagens/Marcela.png" width="120px;" alt="Foto da Marcela"/><br>
       <a href="https://www.linkedin.com/in/maria/" target="_blank">
         <sub><b>Marcela Cantalice</b></sub>
       </a>
     </td>
     <td align="center">
-      <img src="Marcos.png" width="120px;" alt="Foto do Marcos"/><br>
+      <img src="imagens/Marcos.png" width="120px;" alt="Foto do Marcos"/><br>
       <a href="https://www.linkedin.com/in/marcos-dalyson-9457373b3?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank">
         <sub><b>Marcos Dalyson</b></sub>
       </a>
     </td>
     <td align="center">
-      <img src="Mateus.png" width="120px;" alt="Foto do Mateus"/><br>
+      <img src="imagens/Mateus.png" width="120px;" alt="Foto do Mateus"/><br>
       <a href="https://www.linkedin.com/in/mateus-oliveira-172492213" target="_blank">
         <sub><b>Mateus Oliveira</b></sub>
       </a>
