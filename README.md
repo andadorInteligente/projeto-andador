@@ -24,7 +24,7 @@ Projeto desenvolvido durante a disciplina de Robótica Inclusiva.
 <br>
 
 <p align="center">
-  <img alt="Logo do Andador Inteligente" src="assets/logo_c3.png" width="35%">
+  <img alt="Logo do Andador Inteligente" src="image.png" width="35%">
 </p>
 
 ## 🌐 Documentação
