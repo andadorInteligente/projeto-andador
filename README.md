@@ -29,7 +29,7 @@ Projeto desenvolvido durante a disciplina de Robótica Inclusiva.
 
 ## 🌐 Documentação
 
-- 📄 **Documentação em PDF**: [Clique aqui para acessar](Documentacao_Andador_Inteligente.pdf)
+- 📄 **Documentação em PDF**: [Clique aqui para acessar](documentacao/andador_inteligente.pdf)
 
 ## 💻 Projeto
 
